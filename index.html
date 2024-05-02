@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="index.html" content="width=device-width, initial-scale=1">
+        <link href='https://fonts.googleapis.com/css?family=Almendra' rel='stylesheet'>
+        <style>
+            input {
+                padding: 1.5vw;
+                margin: 1vw;
+                border: .75vw solid #0B3159;
+                border-radius: 1vw;
+                width: 25vw;
+            }
+            body {
+                background-image: url("Castle.png");
+                background-repeat: no-repeat;
+                background-color: #D4E8F1;
+                background-size: 100% 100%;
+                color: #0B3159;
+                text-size: 3vw;
+                font-size: 1.5vw;
+                font-family: Almendra;
+                padding: 5vw;
+            }
+            select {
+                padding: 1.5vw;
+                margin: 1vw;
+                border: .75vw solid #0B3159;
+                border-radius: 1vw;
+                color: #0B3159;
+                font-size: 1.5vw;
+                font-family: Almendra;
+                width: 15vw;
+            }
+            input[type="radio"] {
+                width: 2vw;
+                margin-right: .5vw;
+                font-family: Almendra;
+            }
+            input[type="submit"] {
+                color: #0B3159;
+                font-size: 2vw;
+                width: 15vw;
+                font-family: Almendra;
+            }
+            input[type="submit"]:hover {
+                color: white;
+                background-color: #0B3159;
+            }
+            h1 {
+                font-size: 5vw;
+            }
+        </style>
+    </head>
+    <body>
+    <p>
+        <h1>MadLib</h1>
+        <form name="madlib" method="get" id="madlib">
+        <label for="name">Enter Your Name:</label><br>
+            <input type="text" id="name" name="name">
+            
+        <br>
+        <br>
+            
+        <label for="adjectiveone">Write an Adjective:</label><br>
+            <input type="text" id="adjectiveone" name="adjectiveone">
+            
+            <br>
+            <br>
+            
+        <label for="home">Choose a Home:</label><br>
+            <select id="home" name="home">
+            <option value="castle">Castle</option>
+            <option value="boat">Boat</option>
+            <option value="hut">Hut</option>
+            <option value="cave">Cave</option>
+            <option value="mansion">Mansion</option>
+        </select><br>
+        <br>
+        
+        <label for="adjectivetwo">Write an Adjective:</label><br>
+            <input type="text" id="adjectivetwo" name="adjectivetwo">
+            
+            <br>
+            <br>
+            
+            <label for="creature">Choose a Creature:</label><br>
+                <input type="radio" id="beaver" name="creature" value="beaver">
+                <label for="beaver">beaver</label>     
+                <input type="radio" id="fish" name="creature" value="fish">
+                <label for="fish">fish</label>
+                <input type="radio" id="bee" name="creature" value="bee">
+                <label for="bee">bee</label>
+                <input type="radio" id="blob" name="creature" value="blob">
+                <label for="blob">blob</label><br><br>
+                
+            <label for="verbone">Write an Past-Tense Verb:</label><br>
+            <input type="text" id="verbone" name="verbone">
+            
+            <br>
+            <br>
+            
+            <label for="nametwo">Write a Negative Adjective:</label><br>
+            <input type="text" id="nametwo" name="nametwo">
+            
+            <br>
+            <br>
+            
+            <label for="verbtwo">Choose an Action:</label><br>
+                <input type="radio" id="kicked" name="verbtwo" value="kicked">
+                <label for="kicked">kicked</label>     
+                <input type="radio" id="slapped" name="verbtwo" value="slapped">
+                <label for="slapped">slapped</label>
+                <input type="radio" id="fought" name="verbtwo" value="fought">
+                <label for="fought">fought</label><br><br>
+                
+            <label for="adjectivethree">Choose a Feeling:</label><br>
+                <input type="radio" id="loved" name="adjectivethree" value="loved">
+                <label for="loved">loved</label>     
+                <input type="radio" id="appreciated" name="adjectivethree" value="appreciated">
+                <label for="appreciated">appreciated</label>
+                <input type="radio" id="honored" name="adjectivethree" value="honored">
+                <label for="honored">honored</label><br><br>
+            
+            <label for="verbthree">Write Another Adjective:</label><br>
+            <input type="text" id="verbthree" name="verbthree">
+            
+            <br>
+            <br>
+            
+            <label for="verbfour">You Might Treat Someone With... (ex. kindness):</label><br>
+            <input type="text" id="verbfour" name="verbfour">
+            
+            <br>
+            <br>
+        
+        <input type="submit" value="Show Story">
+        
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        </p>
+        
+        </form>
+        
+    <div id="formContents"></div>
+        
+    <script>
+    
+        var form = document.getElementById("madlib");
+        form.addEventListener("submit", function(event){
+            event.preventDefault();
+            
+            var name = document.getElementById("name").value;
+            var adjectiveone = document.getElementById("adjectiveone").value;
+            var home = document.getElementById("home").value;
+            var adjectivetwo = document.getElementById("adjectivetwo").value;
+            var creature = document.querySelector('input[name="creature"]:checked').value;
+            var verbone = document.getElementById("verbone").value;
+            var nametwo = document.getElementById("nametwo").value;
+            var verbtwo = document.querySelector('input[name="verbtwo"]:checked').value;
+            var adjectivethree = document.querySelector('input[name="adjectivethree"]:checked').value;
+            var verbthree = document.getElementById("verbthree").value;
+            var verbfour = document.getElementById("verbfour").value;
+            
+            var putStory = document.getElementById("formContents");
+            
+            putStory.innerHTML = "There once was a princess named " + name + ". " +
+                "She lived in a very " + adjectiveone + " " + home + "." +
+                " One " + adjectivetwo + " day, a " + verbthree + " " + creature + " crawled out of the forest and approached her home." + 
+                " Suddenly, the " + creature + " " + verbone + "." +
+                " Concerned, " + name + " ran outside to meet the " + creature + "." + 
+                " The " + creature + " said she was " + nametwo + ". " + 
+                "Offended, " + name + " " + verbtwo + " the " + creature + ". " + 
+                "The town was " + adjectivethree + ". They loved the " + creature + ". " + 
+                " The " + creature + " ate " + name + " and the town was happy again. In conclusion, always treat every " + creature + " with " + verbfour +
+                ", even if they insult you.";
+                
+            
+            
+            
+        });
+    
+    </script>
+
+    </body>
+</html>
